@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CatOgre Compiler</title>
+</head>
+<body>
+    <textarea id="code" placeholder="type some code here"></textarea>
+    <button id="compile">Go</button>
+
+    <p id="text" style="font-size: 13px; font-family: monospace;"></p>
+
+    <script src="../catogre-edit/scripts/commandsList.js"></script>
+    
+    <script src="./compiler.js"></script>
+    <script src="./moo.js"></script>
+
+    <script>
+        document.querySelector('#compile').onclick = () => {
+            let coms = tokenizeStr(document.querySelector('#code').value);
+            coms.forEach(c => {
+                document.querySelector('#text').innerHTML += `<br>${c.type}: "${c.value}";`
+            });
+        }
+    </script>
+</body>
+</html>
